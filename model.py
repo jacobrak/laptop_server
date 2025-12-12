@@ -1,3 +1,23 @@
+import random
+def emoji():
+    UWU_EMOTES = [
+    "uwu",
+    "owo",
+    "^w^",
+    ">w<",
+    "(｡♥‿♥｡)",
+    "(✿◕‿◕)",
+    "(◕‿◕✿)",
+    "(≧◡≦)",
+    "(´｡• ᵕ •｡`)",
+    "(๑>◡<๑)",
+    "(｡･ω･｡)",
+    "(≧ω≦)",
+    "(♡˙︶˙♡)",
+    "(❀´▽`❀)",
+]
+    return str(random.choice(UWU_EMOTES))
+
 UWU_DICT = {
     # greetings
     "hello": "hewwo",
@@ -154,16 +174,28 @@ UWU_DICT = {
     "bug": "bwig",
     "timbur": "rico",
     "loves" :"wuvs",
-    "love": "wuv"
-}
+    "are": "awe",
+    "beautiful": "beautifoow",
+    "girlfriend": "girlfwiend",
+    "Ellie": "My pewfect Queen Ellie"
+}   
 text = "Hello Sir, how are you doing?"
 
 def encode(text):
     ans = []
     for word in text.split():
-        if word in UWU_DICT:
-            ans.append(UWU_DICT[word])
+        if word.lower() in UWU_DICT:
+            uwu = UWU_DICT[word.lower()]
+
+            if word.isupper():
+                uwu = uwu.upper()
+            elif word[0].isupper():
+                uwu = uwu.capitalize()
+
+            ans.append(uwu)
+        elif word == ",":
+            ans.append(emoji() + ",")
         else:
             ans.append(word)
-    
+    ans.append(emoji())
     return " ".join(ans)
